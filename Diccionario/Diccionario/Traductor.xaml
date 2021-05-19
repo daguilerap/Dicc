@@ -1,0 +1,91 @@
+﻿<Window x:Class="Diccionario.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Diccionario"
+        mc:Ignorable="d"
+        Title="Traductor" Height="450" Width="800">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Inglés-Español">
+                <Grid>
+                    <TextBox x:Name="txtIng" Margin="80,131,498,231">
+                    </TextBox>
+                    <Label Margin="80,77,588,265" Content="Inglés" FontSize="18" FontFamily="Montserrat"/>
+                    <Label Name="labIng" Background="Black" Foreground="White" Margin="80,176,627,170"/>
+                    <Button x:Name="btnEsp" Content="Español" Margin="200,176,500,170" Background="#FFCCEDFF" Click="btnEsp_Click"></Button>
+
+                    <Grid.Background>
+                        <ImageBrush ImageSource="fondo.jpg" />
+                    </Grid.Background>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Español-Inglés">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="31*"/>
+                        <ColumnDefinition Width="362*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="txtEsp" Margin="17.769,131,498,231" Grid.Column="1">
+                    </TextBox>
+                    <Label Margin="18,82,590,265" Content="Español" Grid.Column="1" FontSize="18" FontFamily="Montserrat"/>
+                    <Label Name="labEsp" Background="Black" Foreground="White" Margin="17.769,176,625,175" Grid.Column="1"/>
+                    <Button x:Name="btnIng" Content="Inglés" Margin="138.769,176,498,175" Background="#FFCCEDFF" Click="btnEsp_Click" Grid.Column="1"></Button>
+
+                    <Grid.Background>
+                        <ImageBrush ImageSource="fondo.jpg" />
+                    </Grid.Background>
+                    
+                </Grid>
+            </TabItem>
+            <TabItem Header="Juego">
+                <Grid>
+                    <Label Content="Inglés" Margin="125,65,539,276" FontSize="18" FontFamily="Montserrat"/>
+                    <Label Content="Aciertos" FontSize="18" FontFamily="Montserrat" Margin="463,136,227,218"/>
+                    <Label Content="Fallos" FontSize="18" FontFamily="Montserrat" Margin="463,178,227,176"/>
+                    <Label Name="labAdivinar" Background="Black" Foreground="White" Margin="125,131,539,224" Content="palabra a adivinar"/>
+                    <TextBox x:Name="txtJuego" Margin="125,183,539,175">Respuesta</TextBox>
+                    <Button x:Name="btnSiguiente" Content="Siguiente" Margin="125,242,574,105" Background="#FFCCEDFF" Click="btnSiguiente_Click"></Button>
+                    <Button x:Name="btnEmpezar" Content="Empezar" Margin="294,154,377,190" Background="#FFCCEDFF" Click="btnEmpezar_Click"></Button>
+                    <Label x:Name="labAcierto" Content="0" FontSize="18" FontFamily="Montserrat" Margin="578,136,144,218" Foreground="#FF0017FF" FontWeight="Bold"/>
+                    <Label x:Name="labFallos" Content="0" FontSize="18" FontFamily="Montserrat" Margin="578,183,144,171" Foreground="Red" FontWeight="Bold"/>
+                    <Label x:Name="labContador" Content="0/10" Margin="228,250,436,91" FontSize="14" FontFamily="Montserrat"/>
+                    <Label x:Name="LabResultado" Content="" FontSize="18" FontFamily="Montserrat" Margin="463,225,144,105"/>
+
+                    <Grid.Background>
+                        <ImageBrush ImageSource="fondo.jpg" />
+                    </Grid.Background>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Listado ordenado">
+                <Grid>
+                    <TextBox x:Name="txtAddIng" HorizontalAlignment="Left" Height="23" Margin="25,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <Label Content="Inglés" HorizontalAlignment="Left" Margin="25,237,0,0" VerticalAlignment="Top" FontFamily="Montserrat"/>
+                    <Label Content="Español" HorizontalAlignment="Left" Margin="188,237,0,0" VerticalAlignment="Top" FontFamily="Montserrat"/>
+                    <TextBox x:Name="txtAddEsp" HorizontalAlignment="Left" Height="23" Margin="188,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <Button x:Name="btnAdd" Content="Añadir" Margin="338,266,368,87" Click="btnAdd_Click" Background="#FFCCEDFF"></Button>
+                    <Button x:Name="btnDel" Content="Eliminar" Margin="429,268,277,87" Click="btnDel_Click" Background="#FFCCEDFF"></Button>
+                    <ListBox x:Name="myListBox" Margin="25,10,277,192">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Width="auto">
+                                    <TextBlock Text="{Binding Path=Key}" />
+                                    <TextBlock Text=" = " />
+                                    <TextBlock Text="{Binding Path=Value}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <Grid.Background>
+                        <ImageBrush ImageSource="fondo.jpg" />
+                    </Grid.Background>
+                    
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
